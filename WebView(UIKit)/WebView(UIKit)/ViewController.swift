@@ -10,6 +10,8 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
   var webView: WKWebView!
+  var currentPage: String!
+  var websites = ["google.com", "apple.com", "hackingwithswift.com"]
   var progressView: UIProgressView!
   var backButton: UIBarButtonItem!
   var forwardButton: UIBarButtonItem!
@@ -27,7 +29,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
 		
 	  navigationItem.rightBarButtonItem = UIBarButtonItem(title: "open", style: .plain, target: self, action: #selector(openTapped))
 	  
-	  let url = URL(string: "https://www.google.com")!
+	  let url = URL(string: "https://" + currentPage)!
 	  
 	  webView.load(URLRequest(url: url))
 	  webView.allowsBackForwardNavigationGestures = true
@@ -49,8 +51,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
   @objc func openTapped(){
 	 let ac = UIAlertController(title: "Open page", message: nil, preferredStyle: .actionSheet)
 	 
-	 ac.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage))
-	 ac.addAction(UIAlertAction(title: "hackingwithswift.com", style: .default, handler: openPage))
+	 for website in websites {
+		ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+	 }
 	 ac.addAction(UIAlertAction(title: "cancel", style: .cancel))
 	 
 	 ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
@@ -76,18 +79,25 @@ class ViewController: UIViewController, WKNavigationDelegate {
 	 }
   }
   
+  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
+	 let url = navigationAction.request.url
+	 
+	 if let host = url?.host(){
+		for website in websites {
+		  if host.contains(website){
+			 return .allow
+		  }
+		}
+	 }
+	 
+	 let ac = UIAlertController(title: "Error!", message: "This page is not allowed", preferredStyle: .alert)
+	 
+	 ac.addAction(UIAlertAction(title: "Continue", style: .default))
+	 
+	 present(ac, animated: true)
+	 return .cancel
+  }
   
-  
-//  @IBAction func button1(_ sender: UIButton) {
-//	 if sender.tag == 0{
-//		webView.goBack()
-//	 }else{
-//		webView.goForward()
-//	 }
-//  }
-//  @IBOutlet var forwardButton: UIButton!
-//  
-//  @IBOutlet var backButton: UIButton!
-//  
+
 }
 

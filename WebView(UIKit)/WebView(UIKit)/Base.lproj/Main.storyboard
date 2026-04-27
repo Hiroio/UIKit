@@ -11,13 +11,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WebView_UIKit_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Browser" id="BYZ-38-t0r" customClass="ViewController" customModule="WebView_UIKit_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mAe-V4-Abh">
-                                <rect key="frame" x="33.999999999999993" y="793" width="84.333333333333314" height="34.333333333333371"/>
+                                <rect key="frame" x="33.999999999999993" y="802" width="84.333333333333314" height="34.333333333333371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qL9-Md-aQY">
                                         <rect key="frame" x="0.0" y="0.0" width="39.666666666666664" height="34.333333333333336"/>
@@ -66,12 +66,43 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Gh4-TZ-BaU"/>
+                        <segue destination="wiD-d6-JaL" kind="relationship" relationship="rootViewController" id="jow-1D-dT9"/>
+                        <segue destination="BYZ-38-t0r" kind="push" id="xSO-N2-OZV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJL-xi-l3L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49.618320610687022" y="92.957746478873247"/>
+            <point key="canvasLocation" x="-857" y="-150"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="IAf-bh-INz">
+            <objects>
+                <tableViewController id="wiD-d6-JaL" customClass="TableViewController" customModule="WebView_UIKit_" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="iAk-9q-kw0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WebPage" rowHeight="314" id="Igj-qJ-H9q">
+                                <rect key="frame" x="0.0" y="50" width="393" height="314"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Igj-qJ-H9q" id="W8y-RB-Po2">
+                                    <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="314"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="WebPage"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wiD-d6-JaL" id="XT8-oS-t5M"/>
+                            <outlet property="delegate" destination="wiD-d6-JaL" id="Di4-3J-n9f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sS3-DN-FXU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5pz-RR-LaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443.51145038167937" y="-585.21126760563379"/>
         </scene>
     </scenes>
     <resources>
