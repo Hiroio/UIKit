@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
@@ -18,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //	  2. init window
 	  self.window = UIWindow(windowScene: scene)
 //	  3. initialize root view
-	  self.window?.rootViewController = SecondViewController()
+	  self.window?.rootViewController = UINavigationController(rootViewController: TableViewController())
 //	  4. make it visible
 	  self.window?.makeKeyAndVisible()
 	}

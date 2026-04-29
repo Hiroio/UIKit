@@ -22,8 +22,13 @@ class SecondViewController: UIViewController {
 	 return $0
   }(UIButton(primaryAction: btnAction))
   
-  lazy var btnAction: UIAction = UIAction { _ in
+  lazy var btnAction: UIAction = UIAction {[weak self] _ in
 	 print("Btn Pressed")
+	 guard let self = self else { return }
+	 self.secondTitle.text = "Button pressed"
+	 DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+		self.secondTitle.text = "Second Label"
+	 }
   }
   
     override func viewDidLoad() {
